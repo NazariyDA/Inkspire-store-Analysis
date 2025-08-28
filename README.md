@@ -1,7 +1,15 @@
 # Inkspire store Analysis 📊 📚
 Conducting an analysis of the imaginary Inkspire store’s performance by creating a dashboard that presents data for marketing managers, enabling them to make informed decisions regarding the optimization of advertising campaigns, promotional strategies, and product assortment.
-## Conclusions Based on the Inkspire Dashboard Analysis:
 
+## The interactive dashboard displays information about the imaginary Inkspire store, allowing users to:
+* To quickly review the store’s key metrics and conversions (both overall and across key segments)
+* Independently explore conversions to identify how they vary depending on visitor groups and traffic sources.
+
+## Tools that were used during the project
+* The data for this project was obtained from the public GA4 dataset in **BigQuery**.
+* The required and processed data were visualized using **Tableau**.
+
+## Conclusions Based on the Inkspire Dashboard Analysis:
 * ### Seasonality of User Activity.
 In early December 2020, an increase in user interest in the Inkspire store was recorded, corresponding to the pre-holiday period. This led to a rise in book views, especially of gift editions and holiday sets, as well as an increase in items added to the shopping cart.
 
@@ -62,4 +70,4 @@ Some traffic sources generate high volume but have low conversion rates.
 * Implement labels such as “Best Seller,” “New Arrival,” and “Seasonal Offer.”
 * Include a “Customers Also Viewed...” section to increase session depth.
 
-### The overall goal of the recommendations is to smoothly guide the user through the funnel, reduce barriers at each stage, and strengthen the emotional connection with the Inkspire brand.
+> ### The overall goal of the recommendations is to smoothly guide the user through the funnel, reduce barriers at each stage, and strengthen the emotional connection with the Inkspire brand.
