@@ -18,6 +18,9 @@ Conducting an analysis of the imaginary Inkspire store’s performance by creati
   </tr>
 </table>
 
+<img src="dashboard-logo.png" alt="Dashboard Logo" width="1000" height="625"/>
+
+> The main elements of the dashboard include **metrics on visits**, **orders**, and **sales**, as well as a visualized **funnel** from store visit to purchase.
 
 ## Conclusions Based on the Inkspire Dashboard Analysis:
 * ### Seasonality of User Activity.
