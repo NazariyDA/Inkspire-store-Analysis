@@ -9,14 +9,22 @@ Conducting an analysis of the imaginary Inkspire store’s performance by creati
 
 <table>
   <tr>
-    <td><em>The data for this project was obtained from the public GA4 dataset in <strong>BigQuery</strong>.</em></td>
+    <td>
+      <em>The data for this project was obtained from the public GA4 dataset in <strong>BigQuery</strong>.</em><br/>
+      <a href="https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=ga4_obfuscated_sample_ecommerce&t=events_20210131&page=table" target="_blank">Dataset link</a>
+    </td>
     <td><img src="google-bigquery-logo.png" alt="BigQuery Logo" width="200" height="130"/></td>
   </tr>
   <tr>
-    <td><em>The required and processed data were visualized using <strong>Tableau</strong>.</em></td>
+    <td>
+      <em>The required and processed data were visualized using <strong>Tableau</strong>.</em><br/>
+      <a href="https://public.tableau.com/app/profile/nazarii.hladysh/viz/Inkspireproject/dashboard" target="_blank">Dashboard link</a>
+    </td>
     <td><img src="Tableau-logo.png" alt="Tableau Logo" width="200" height="130"/></td>
   </tr>
 </table>
+
+
 
 <img src="dashboard-logo.png" alt="Dashboard Logo" width="1000" height="625"/>
 
