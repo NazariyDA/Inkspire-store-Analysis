@@ -6,8 +6,18 @@ Conducting an analysis of the imaginary Inkspire store’s performance by creati
 * Independently explore conversions to identify how they vary depending on visitor groups and traffic sources.
 
 ## Tools that were used during the project
-* The data for this project was obtained from the public GA4 dataset in **BigQuery**.
-* The required and processed data were visualized using **Tableau**.
+
+<table>
+  <tr>
+    <td><em>The data for this project was obtained from the public GA4 dataset in <strong>BigQuery</strong>.</em></td>
+    <td><img src="google-bigquery-logo.png" alt="BigQuery Logo" width="200" height="130"/></td>
+  </tr>
+  <tr>
+    <td><em>The required and processed data were visualized using <strong>Tableau</strong>.</em></td>
+    <td><img src="Tableau-logo.png" alt="Tableau Logo" width="200" height="130"/></td>
+  </tr>
+</table>
+
 
 ## Conclusions Based on the Inkspire Dashboard Analysis:
 * ### Seasonality of User Activity.
