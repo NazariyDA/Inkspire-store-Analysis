@@ -11,7 +11,7 @@ Conducting an analysis of the imaginary Inkspire store’s performance by creati
   <tr>
     <td>
       <em>The data for this project was obtained from the public GA4 dataset in <strong>BigQuery</strong>.</em><br/>
-      <a href="https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=ga4_obfuscated_sample_ecommerce&t=events_20210131&page=table" target="_blank">Dataset link</a>
+      <a href="https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=ga4_obfuscated_sample_ecommerce&t=events_20210131&page=table&project=woven-mapper-422415-j8&ws=!1m5!1m4!4m3!1sbigquery-public-data!2sga4_obfuscated_sample_ecommerce!3sevents_20210131&page=table" target="_blank">Dataset link</a>
     </td>
     <td><img src="google-bigquery-logo.png" alt="BigQuery Logo" width="200" height="130"/></td>
   </tr>
