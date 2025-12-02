@@ -24,7 +24,106 @@ Conducting an analysis of the imaginary Inkspire store’s performance by creati
   </tr>
 </table>
 
+<details>
+  <summary>📄 SQL Query with Comments (GA4 Session + Events Join)</summary>
 
+```sql
+-- ============================================
+-- First CTE: Inkspire
+-- Builds a table of session-level information:
+-- - user & session identifiers
+-- - landing page path
+-- - geo, device, and traffic source details
+-- ============================================
+WITH Inkspire AS (
+  SELECT
+    user_pseudo_id,  -- Unique GA4 user ID
+
+    -- Extracts GA4 session_id from event parameters
+    (SELECT value.int_value 
+     FROM e.event_params 
+     WHERE key = 'ga_session_id') AS session_id,
+
+    -- Creates unique composite key: user + session
+    user_pseudo_id || 
+    (SELECT value.int_value 
+     FROM e.event_params 
+     WHERE key = 'ga_session_id') AS user_session_id,
+
+    -- Extracts clean page path from full URL
+    REGEXP_EXTRACT(
+      (SELECT value.string_value 
+       FROM e.event_params  
+       WHERE key = 'page_location'),
+      r'(?:\w+\:\/\/)?[^\/]+\/([^\?#]*)'
+    ) AS page_path,
+
+    -- Geo information
+    geo.city                 AS city,
+    geo.country              AS country,
+
+    -- Device information
+    device.category          AS device_category,
+    device.language          AS device_language,
+    device.operating_system  AS device_operating_system,
+
+    -- Traffic source (source / medium / campaign)
+    traffic_source.source    AS source,
+    traffic_source.medium    AS medium,
+    traffic_source.name      AS campaign
+
+  FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*` e
+  WHERE event_name = 'session_start'  -- Only session start events
+),
+
+-- ============================================
+-- Second CTE: Events
+-- Builds a dataset of selected e-commerce events
+-- linked to the same user_session_id key
+-- ============================================
+Events AS (
+  SELECT
+    -- Converts microsecond timestamp to date
+    DATE(TIMESTAMP_MICROS(event_timestamp)) AS event_date,
+
+    -- Name of the event (purchase, add_to_cart, etc.)
+    event_name,
+
+    -- Same composite key used for session mapping
+    user_pseudo_id || 
+    (SELECT value.int_value 
+     FROM e.event_params 
+     WHERE key = 'ga_session_id') AS user_session_id
+
+  FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*` e
+
+  -- Only events relevant to the ecommerce funnel
+  WHERE event_name IN (
+    'session_start', 
+    'view_item',
+    'add_to_cart',
+    'begin_checkout',
+    'add_shipping_info',
+    'add_payment_info',
+    'purchase'
+  )
+)
+
+-- ============================================
+-- Final SELECT
+-- Joins sessions with events using user_session_id
+-- Each row = session x event
+-- ============================================
+SELECT 
+  Inkspire.*,    -- Session-level data
+  e.event_date,  -- Event date
+  e.event_name   -- Event type
+FROM Inkspire
+LEFT JOIN Events e USING (user_session_id)
+LIMIT 5;  -- Limit for preview
+```
+
+</details>
 
 <img src="dashboard-logo.png" alt="Dashboard Logo" width="1000" height="625"/>
 
