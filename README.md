@@ -30,7 +30,7 @@ Conducting an analysis of the imaginary Inkspire store’s performance by creati
 ```sql
 -- ============================================
 -- First CTE: Inkspire
--- Builds a table of session-level information:
+-- Built a table of session-level information:
 -- - user & session identifiers
 -- - landing page path
 -- - geo, device, and traffic source details
@@ -39,18 +39,18 @@ WITH Inkspire AS (
   SELECT
     user_pseudo_id,  -- Unique GA4 user ID
 
-    -- Extracts GA4 session_id from event parameters
+    -- Extracted GA4 session_id from event parameters
     (SELECT value.int_value 
      FROM e.event_params 
      WHERE key = 'ga_session_id') AS session_id,
 
-    -- Creates unique composite key: user + session
+    -- Created unique composite key: user + session
     user_pseudo_id || 
     (SELECT value.int_value 
      FROM e.event_params 
      WHERE key = 'ga_session_id') AS user_session_id,
 
-    -- Extracts clean page path from full URL
+    -- Extracted clean page path from full URL
     REGEXP_EXTRACT(
       (SELECT value.string_value 
        FROM e.event_params  
@@ -78,12 +78,12 @@ WITH Inkspire AS (
 
 -- ============================================
 -- Second CTE: Events
--- Builds a dataset of selected e-commerce events
+-- Built a dataset of selected e-commerce events
 -- linked to the same user_session_id key
 -- ============================================
 Events AS (
   SELECT
-    -- Converts microsecond timestamp to date
+    -- Converted microsecond timestamp to date
     DATE(TIMESTAMP_MICROS(event_timestamp)) AS event_date,
 
     -- Name of the event (purchase, add_to_cart, etc.)
@@ -111,7 +111,7 @@ Events AS (
 
 -- ============================================
 -- Final SELECT
--- Joins sessions with events using user_session_id
+-- Executed LEFT JOIN sessions with events using user_session_id
 -- Each row = session x event
 -- ============================================
 SELECT 
